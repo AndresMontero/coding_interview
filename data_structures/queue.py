@@ -50,3 +50,16 @@ t2.start()
 
 t1.join()
 t2.join()
+
+binary_q = Queue()
+
+if binary_q.size() == 0:
+    binary_q.enqueue("1")
+
+n = 10
+
+for i in range(n):
+    front = binary_q.front()
+    binary_q.enqueue(front + "0")
+    binary_q.enqueue(front + "1")
+    print(binary_q.dequeue())
