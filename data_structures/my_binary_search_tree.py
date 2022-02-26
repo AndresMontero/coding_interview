@@ -98,12 +98,13 @@ def build_tree(elements):
     return root
 
 
-numbers = [84, 102, 15, 1, 0, 10, 6, 5, 8, 98]
-numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-numbers_tree = build_tree(numbers)
-print(numbers_tree.in_order_traversal())
-print(numbers_tree.post_order_traversal())
-print(numbers_tree.pre_order_traversal())
-print(numbers_tree.find_min())
-print(numbers_tree.find_max())
-print(numbers_tree.calculate_sum())
+if __name__ == '__main__':
+    numbers = [84, 102, 15, 1, 0, 10, 6, 5, 8, 98]
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    numbers_tree = build_tree(numbers)
+    print(numbers_tree.in_order_traversal())
+    print(numbers_tree.post_order_traversal())
+    print(numbers_tree.pre_order_traversal())
+    print(numbers_tree.find_min())
+    print(numbers_tree.find_max())
+    print(numbers_tree.calculate_sum())
