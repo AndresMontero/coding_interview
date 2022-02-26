@@ -39,9 +39,8 @@ def serve_order(queue):
         time.sleep(2)
 
 
-orders = ['pizza','samosa','pasta','biryani','burger']
+orders = ['pizza', 'samosa', 'pasta', 'biryani', 'burger']
 queue = Queue()
-
 
 t1 = threading.Thread(target=place_order, args=(orders, queue))
 t2 = threading.Thread(target=serve_order, args=(queue,))
