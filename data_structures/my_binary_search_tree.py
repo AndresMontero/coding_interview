@@ -87,13 +87,13 @@ class BinarySearchTreeNode:
     def calculate_sum(self):
         return sum(self.in_order_traversal())
 
-    def delete(self, value):
+    def delete_from_max(self, value):
         if value < self.data:
             if self.left:
-                self.left = self.left.delete(value)
+                self.left = self.left.delete_from_max(value)
         elif value > self.data:
             if self.right:
-                self.right = self.right.delete(value)
+                self.right = self.right.delete_from_max(value)
         else:
             if self.left is None and self.right is None:
                 return None
@@ -108,6 +108,29 @@ class BinarySearchTreeNode:
 
             self.data = min_value
             self.right = self.right.delete(min_value)
+
+        return self
+
+    def delete_from_left(self, value):
+        if value < self.data:
+            if self.left:
+                self.left = self.left.delete_from_left(value)
+        elif value > self.data:
+            if self.right:
+                self.right = self.right.delete_from_left(value)
+        else:
+            if self.left is None and self.right is None:
+                return None
+
+            if self.left is None:
+                return self.right
+
+            if self.right is None:
+                return self.left
+
+            max_value = self.left.find_max()
+            self.data = max_value
+            self.left = self.left.delete_from_left(max_value)
 
         return self
 
@@ -132,5 +155,6 @@ if __name__ == '__main__':
     print(numbers_tree.find_min())
     print(numbers_tree.find_max())
     print(numbers_tree.calculate_sum())
-    numbers_tree.delete(84)
+    # numbers_tree.delete_from_max(84)
+    numbers_tree.delete_from_left(84)
     print(numbers_tree.in_order_traversal())
