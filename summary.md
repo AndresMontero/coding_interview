@@ -83,7 +83,7 @@ collections.dequeue or list
 * pre order: root, left, right
 
 ![Alt text](./static/data_structures_big_o.png?raw=true "Title")
-
+picture taken from: https://www.bigocheatsheet.com/
 
 
 ## Search Algorithms
@@ -159,3 +159,4 @@ collections.dequeue or list
 | Best Case | O(kn) |
 
 ![Alt text](./static/algorithms_big_o.png?raw=true "Title")
+picture taken from: https://www.bigocheatsheet.com/
