@@ -36,6 +36,7 @@ class BinarySearchTreeNode:
                 return False
 
     def in_order_traversal(self):
+        # left, root, right
         elements = []
         if self.left:
             elements += self.left.in_order_traversal()
@@ -48,6 +49,7 @@ class BinarySearchTreeNode:
         return elements
 
     def post_order_traversal(self):
+        # left, right, root
         elements = []
         if self.left:
             elements += self.left.post_order_traversal()
@@ -60,6 +62,7 @@ class BinarySearchTreeNode:
         return elements
 
     def pre_order_traversal(self):
+        # root, left, right
         elements = []
 
         elements.append(self.data)
