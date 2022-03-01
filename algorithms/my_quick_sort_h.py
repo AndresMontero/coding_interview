@@ -1,3 +1,4 @@
+# implementation of quick sort using hoare partition scheme with first element as pivot
 def partition(elements, start, end):
     start_init = start
     # pivot will be first element of the array, this could be optimized to avoid worst
