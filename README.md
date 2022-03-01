@@ -12,7 +12,8 @@ Repo for practicing coding interview questions
     └── stack
     └── tree
 ├── algorithms         
-│   └── 
+    └── binary_search
+    └── buble_sort
 ├── README.md 
 
 ```
