@@ -15,19 +15,26 @@ def modified_bubble_sort(elements):
     return elements
 
 
-def bubble_sort(elements):
+def bubble_sort(elements, key=None):
     size = len(elements)
     count = 0
     for i in range(size - 1):
         swapped = False
         for j in range(0, size - 1 - i):
             count += 1
-            if elements[j] > elements[j + 1]:
-                tmp = elements[j + 1]
-                elements[j + 1] = elements[j]
-                elements[j] = tmp
+            if key is not None:
+                if elements[j][key] > elements[j + 1][key]:
+                    tmp = elements[j + 1]
+                    elements[j + 1] = elements[j]
+                    elements[j] = tmp
+                    swapped = True
+            else:
+                if elements[j] > elements[j + 1]:
+                    tmp = elements[j + 1]
+                    elements[j + 1] = elements[j]
+                    elements[j] = tmp
+                    swapped = True
 
-                swapped = True
         if not swapped:
             break
     print(f"Total number of times bubble sort: {count}")
@@ -35,10 +42,17 @@ def bubble_sort(elements):
 
 
 if __name__ == '__main__':
-    elements = [5, 9, 2, 1, 67, 34, 88, 34]
-    bubble_sort(elements)
+    elements = [
+        {'name': 'mona', 'transaction_amount': 1000, 'device': 'iphone-10'},
+        {'name': 'dhaval', 'transaction_amount': 400, 'device': 'google pixel'},
+        {'name': 'kathy', 'transaction_amount': 200, 'device': 'vivo'},
+        {'name': 'aamir', 'transaction_amount': 800, 'device': 'iphone-8'},
+    ]
+    bubble_sort(elements, key='transaction_amount')
+    print(elements)
+    bubble_sort(elements, key='name')
     print(elements)
 
     elements = [5, 9, 2, 1, 67, 34, 88, 34]
-    modified_bubble_sort(elements)
+    bubble_sort(elements)
     print(elements)
