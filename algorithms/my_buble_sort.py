@@ -19,12 +19,17 @@ def bubble_sort(elements):
     size = len(elements)
     count = 0
     for i in range(size - 1):
+        swapped = False
         for j in range(0, size - 1 - i):
             count += 1
             if elements[j] > elements[j + 1]:
                 tmp = elements[j + 1]
                 elements[j + 1] = elements[j]
                 elements[j] = tmp
+
+                swapped = True
+        if not swapped:
+            break
     print(f"Total number of times bubble sort: {count}")
     return elements
 
