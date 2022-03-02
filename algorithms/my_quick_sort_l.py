@@ -3,17 +3,16 @@
 def partition(elements, start, end):
     pivot_value = elements[end]
     p_i = start
-    if end > 0 and start < len(elements):
-        while p_i < end:
-            if elements[p_i] > pivot_value:
-                for i in range(p_i + 1, end + 1):
-                    if elements[i] <= pivot_value:
-                        tmp = elements[i]
-                        elements[i] = elements[p_i]
-                        elements[p_i] = tmp
-                        break
-
+    for i in range(start, end):
+        if elements[i] <= pivot_value:
+            tmp = elements[i]
+            elements[i] = elements[p_i]
+            elements[p_i] = tmp
             p_i += 1
+
+    tmp = elements[end]
+    elements[end] = elements[p_i]
+    elements[p_i] = tmp
     return p_i
 
 
