@@ -41,14 +41,14 @@ def partition(elements, start, end):
     return start, end
 
 
-def quick_sort(elements, start, end):
+def quick_sort_h(elements, start, end):
     if start < end:
         # First find the first partition
         start_i, end_i = partition(elements, start, end)
         # Continue sorting left array
-        quick_sort(elements, start, end_i - 1)
+        quick_sort_h(elements, start, end_i - 1)
         # Continue sorting right array
-        quick_sort(elements, start_i + 1, end)
+        quick_sort_h(elements, start_i + 1, end)
 
     return elements
 
@@ -64,5 +64,5 @@ if __name__ == '__main__':
     ]
 
     for elements in tests:
-        quick_sort(elements, 1, len(elements) - 1)
+        quick_sort_h(elements, 1, len(elements) - 1)
         print(f'sorted array: {elements}')
