@@ -21,12 +21,11 @@ def running_median(elements):
         anchor = elements[i]
 
         if i % 2 == 0:
-            a = elements[i//2]
-            b = elements[i//2 -1]
-            print((a+b)/2)
+            a = elements[i // 2]
+            b = elements[i // 2 - 1]
+            print((a + b) / 2)
         else:
-            print(elements[i//2])
-
+            print(elements[i // 2])
 
         for j in range(i - 1, -1, -1):
             if anchor < elements[j]:
@@ -34,7 +33,12 @@ def running_median(elements):
                 elements[j] = anchor
             else:
                 break
-
+    if len(elements) % 2 == 0:
+        a = elements[len(elements) // 2]
+        b = elements[len(elements) // 2 - 1]
+        print((a + b) / 2)
+    else:
+        print(elements[len(elements) // 2])
 
 
 if __name__ == '__main__':
@@ -50,6 +54,5 @@ if __name__ == '__main__':
     for elements in tests:
         insertion_sort(elements)
         print(f'sorted array: {elements}')
-
 
     running_median([2, 1, 5, 7, 2, 0, 5])
