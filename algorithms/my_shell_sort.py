@@ -1,11 +1,10 @@
 def shell_sort(arr):
     gap = len(arr) // 2
-    gap = 3
     i = 0
     while gap > 0:
 
         for k in range(i, len(arr) - gap, gap):
-            for j in range(i, len(arr) - gap, gap):
+            for j in range(i, len(arr) - gap - i, gap):
                 a = arr[j]
                 b = arr[j + gap]
                 if a > b:
