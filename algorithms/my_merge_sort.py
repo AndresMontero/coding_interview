@@ -1,35 +1,37 @@
-def merge_two_sorted_lists(a, b):
-    final_list = []
+def merge_two_sorted_lists(a, b, arr):
     i = 0  # this will be the left index
     j = 0  # this will be the right index
+    k = 0  # this for the final sorted aarak
     while i < len(a) and j < len(b):
         if a[i] <= b[j]:
-            final_list.append(a[i])
+            arr[k] = a[i]
             i += 1
         else:
-            final_list.append(b[j])
+            arr[k] = b[j]
             j += 1
-    if i < len(a):
-        final_list.extend(a[i:])
-    if j < len(b):
-        final_list.extend(b[j:])
-
-    return final_list
+        k += 1
+    while i < len(a):
+        arr[k] = a[i]
+        i += 1
+        k += 1
+    while j < len(b):
+        arr[k] = b[j]
+        j += 1
+        k += 1
 
 
 def merge_sort(arr):
     if len(arr) <= 1:
-        return arr
-
+        return
     mid = len(arr) // 2
 
     left = arr[:mid]
     right = arr[mid:]
 
-    left = merge_sort(left)
-    right = merge_sort(right)
+    merge_sort(left)
+    merge_sort(right)
 
-    return merge_two_sorted_lists(left, right)
+    merge_two_sorted_lists(left, right, arr)
 
 
 if __name__ == '__main__':
@@ -38,7 +40,9 @@ if __name__ == '__main__':
 
     a = [7]
     b = [2]
-    print(merge_two_sorted_lists(a, b))
+    arr = [7, 2]
+    merge_two_sorted_lists(a, b, arr)
+    print(arr)
 
     tests = [
         [11, 9, 29, 7, 2, 15, 28],
@@ -50,5 +54,5 @@ if __name__ == '__main__':
     ]
 
     for elements in tests:
-        sorted_list = merge_sort(elements)
-        print(f'sorted array: {sorted_list}')
+        merge_sort(elements)
+        print(f'sorted array: {elements}')
