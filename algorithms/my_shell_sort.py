@@ -1,10 +1,9 @@
 def shell_sort_i(arr):
     size = len(arr)
     gap = size // 2
-    gap = 3
     while gap > 0:
 
-        for i in range(gap, size, gap):
+        for i in range(gap, size):
             anchor = arr[i]
             for j in range(i-gap, -1, -gap):
                 if anchor <= arr[j]:
@@ -13,7 +12,7 @@ def shell_sort_i(arr):
                 else:
                     break
 
-        gap -= 1
+        gap //= 2
 
     # when the gap is 1 we do a normal insertion sort
     # for m in range(1, len(arr)):
@@ -22,6 +21,20 @@ def shell_sort_i(arr):
     #         if anchor <= arr[j]:
     #             arr[j + 1] = arr[j]
     #             arr[j] = anchor
+
+
+def shell_sort_t(arr):
+    size = len(arr)
+    gap = size//2
+    while gap > 0:
+        for i in range(gap,size):
+            anchor = arr[i]
+            j = i
+            while j>=gap and arr[j-gap]>anchor:
+                arr[j] = arr[j-gap]
+                j -= gap
+            arr[j] = anchor
+        gap = gap // 2
 
 
 def shell_sort_b(arr):
@@ -57,23 +70,26 @@ def shell_sort_b(arr):
 
 
 if __name__ == '__main__':
-    test = [21, 38, 29, 17, 4, 25, 11, 32, 9]
-    shell_sort_b(test)
-    print(f'sorted array: {test}')
+    # test = [21, 38, 29, 17, 4, 25, 11, 32, 9]
+    # shell_sort_b(test)
+    # print(f'sorted array: {test}')
     test = [21, 38, 29, 17, 4, 25, 11, 32, 9]
     shell_sort_i(test)
     print(f'sorted array: {test}')
+    test = [21, 38, 29, 17, 4, 25, 11, 32, 9]
+    # shell_sort_t(test)
+    # print(f'sorted array: {test}')
 
-    # tests = [
-    #     [21, 38, 29, 17, 4, 25, 11, 32, 9],
-    #     [11, 9, 29, 7, 2, 15, 28],
-    #     [3, 7, 9, 11],
-    #     [25, 22, 21, 10],
-    #     [29, 15, 28],
-    #     [],
-    #     [6]
-    # ]
-    #
-    # for elements in tests:
-    #     shell_sort(elements)
-    #     print(f'sorted array: {elements}')
+    tests = [
+        [21, 38, 29, 17, 4, 25, 11, 32, 9],
+        [11, 9, 29, 7, 2, 15, 28],
+        [3, 7, 9, 11],
+        [25, 22, 21, 10],
+        [29, 15, 28],
+        [],
+        [6]
+    ]
+
+    for elements in tests:
+        shell_sort_i(elements)
+        print(f'sorted array: {elements}')
