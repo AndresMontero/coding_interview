@@ -11,15 +11,16 @@ def find_min(arr, pointer):
 
 
 def selection_sort(arr):
-    for j in range(len(arr) - 1):
-        for i in range(j, len(arr)):
-            curr = arr[j]
-            min_index = find_min(arr, j)
-            if curr > arr[min_index]:
-                tmp = curr
-                arr[i] = arr[min_index]
-                arr[min_index] = tmp
-                break
+    size = len(arr)
+    for j in range(size - 1):
+        min_index = j
+        for i in range(j+1, size):
+            curr = arr[i]
+            if curr < arr[min_index]:
+                min_index = i
+
+        if j != min_index:
+            arr[j], arr[min_index] = arr[min_index], arr[j]
 
 
 if __name__ == '__main__':
