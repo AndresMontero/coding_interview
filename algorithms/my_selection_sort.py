@@ -12,14 +12,14 @@ def find_min(arr, pointer):
 
 def selection_sort(arr):
     size = len(arr)
-    for j in range(size - 1):
+    for j in range(size - 1):  # iterate over the entire array
         min_index = j
-        for i in range(j+1, size):
+        for i in range(j + 1, size):  # find min index from current position forward
             curr = arr[i]
             if curr < arr[min_index]:
                 min_index = i
 
-        if j != min_index:
+        if j != min_index:  # Only swap if min index is not already at correct position
             arr[j], arr[min_index] = arr[min_index], arr[j]
 
 
