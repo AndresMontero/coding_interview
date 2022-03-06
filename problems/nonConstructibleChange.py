@@ -8,7 +8,7 @@ def nonConstructibleChange(coins):
     for c in coins:
         if c > min_change + 1:
             return min_change + 1
-        elif c <= min_change + 1:
+        else:
             min_change += c
 
     return min_change + 1
