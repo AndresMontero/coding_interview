@@ -1,7 +1,7 @@
 def findClosestValueInBst(tree, target, diff=100000, closest_val=None):
     # Write your code here.
     # Time O(log(n)) on average, worst case O(n)
-    # Space O(1)
+    # Space O(log(n) on average, worst case O(n)
     if tree.value == target:
         return tree.value
     elif target < tree.value:
