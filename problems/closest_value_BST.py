@@ -4,18 +4,13 @@ def findClosestValueInBst(tree, target, diff=100000, closest_val=None):
     # Space O(log(n) on average, worst case O(n)
     if tree.value == target:
         return tree.value
-    elif target < tree.value:
-        if abs(target - tree.value) < diff:
-            closest_val = tree.value
-            diff = abs(target - tree.value)
-        if tree.left is not None:
-            closest_val = findClosestValueInBst(tree.left, target, diff, closest_val)
-    elif target > tree.value:
-        if abs(target - tree.value) < diff:
-            closest_val = tree.value
-            diff = abs(target - tree.value)
-        if tree.right is not None:
-            closest_val = findClosestValueInBst(tree.right, target, diff, closest_val)
+    if abs(target - tree.value) < diff:
+        closest_val = tree.value
+        diff = abs(target - tree.value)
+    if target < tree.value and tree.left is not None:
+        closest_val = findClosestValueInBst(tree.left, target, diff, closest_val)
+    if target > tree.value and tree.right is not None:
+        closest_val = findClosestValueInBst(tree.right, target, diff, closest_val)
 
     return closest_val
 
