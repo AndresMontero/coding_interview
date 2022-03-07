@@ -24,17 +24,16 @@ class BinaryTree():
 
 
 def calculate_branch_sum(node, branch_sum, branch_sums):
-    if node is None:
-        return
-
     branch_sum += node.value
 
     if node.left is None and node.right is None:
         branch_sums.append(branch_sum)
         return
 
-    calculate_branch_sum(node.left, branch_sum, branch_sums)
-    calculate_branch_sum(node.right, branch_sum, branch_sums)
+    if node.left is not None:
+        calculate_branch_sum(node.left, branch_sum, branch_sums)
+    if node.right is not None:
+        calculate_branch_sum(node.right, branch_sum, branch_sums)
 
 
 def branchSums(root, branch_sum=0, branch_sums=[]):
@@ -45,6 +44,7 @@ def branchSums(root, branch_sum=0, branch_sums=[]):
     calculate_branch_sum(root, 0, branch_sums)
 
     return branch_sums
+
 
 if __name__ == '__main__':
     tree = BinaryTree(1).insert([2, 3, 4, 5, 6, 7, 8, 9, 10])
