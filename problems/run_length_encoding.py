@@ -23,5 +23,6 @@ def runLengthEncoding(string):
 
     return ''.join(result)
 
+
 if __name__ == '__main__':
     print(runLengthEncoding("AAAAAAAAAAAAABBCCCCDD"))
