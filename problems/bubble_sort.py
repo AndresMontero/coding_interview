@@ -4,7 +4,6 @@ def bubbleSort(array):
     # Space O(1)
     swapped = False
 
-
     for i in range(len(array) - 1):
         for j in range(len(array) - 1 - i):
             if array[j] > array[j + 1]:
@@ -15,6 +14,7 @@ def bubbleSort(array):
         if not swapped:
             break
     return array
+
 
 if __name__ == '__main__':
     tests = [
@@ -29,4 +29,3 @@ if __name__ == '__main__':
     for elements in tests:
         bubbleSort(elements)
         print(f'sorted array: {elements}')
-

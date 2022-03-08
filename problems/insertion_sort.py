@@ -9,6 +9,8 @@ def insertionSort(array):
             j -= 1
 
     return array
+
+
 if __name__ == '__main__':
     tests = [
         [11, 9, 29, 7, 2, 15, 28],
@@ -22,4 +24,3 @@ if __name__ == '__main__':
     for elements in tests:
         insertionSort(elements)
         print(f'sorted array: {elements}')
-
