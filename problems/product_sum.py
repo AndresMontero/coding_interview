@@ -13,7 +13,5 @@ def productSum(array, level=1):
     return result * level
 
 
-
-
 if __name__ == '__main__':
     print(productSum([1, 2, [3], 4, 5]))
