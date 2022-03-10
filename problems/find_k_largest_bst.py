@@ -67,5 +67,5 @@ if __name__ == '__main__':
     root.right = BST(20)
     root.right.left = BST(17)
     root.right.right = BST(22)
-    print(findKthLargestValueInBst(root,3))
-    print(findKthLargestValueInBst_2(root,3))
+    print(findKthLargestValueInBst(root, 3))
+    print(findKthLargestValueInBst_2(root, 3))
