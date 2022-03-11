@@ -18,7 +18,8 @@ def numberOfWaysToTraverseGraph(width, height):
 
     return matrix[-1][-1]
 
+
 if __name__ == "__main__":
     width = 4
     height = 3
-    print(numberOfWaysToTraverseGraph(width,height))
+    print(numberOfWaysToTraverseGraph(width, height))
