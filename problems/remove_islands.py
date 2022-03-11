@@ -54,7 +54,6 @@ def get_unvisited_ones(i, j, matrix, visited):
     if i > 0 and not visited[i - 1][j]:
         unvisited_ones.append([i - 1, j])
 
-
     if i < len(matrix) - 1 and not visited[i + 1][j]:
         unvisited_ones.append([i + 1, j])
 
@@ -78,4 +77,3 @@ if __name__ == "__main__":
     ]
 
     print(removeIslands(input))
-
