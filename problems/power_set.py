@@ -4,10 +4,10 @@ def powerset(array):
     # Space O(n*2^n)
     power_sets = [[]]
 
-    for i in range(len(array)):
+    for element in array:
         for j in range(len(power_sets)):
             current_set = power_sets[j]
-            power_sets.append(current_set + [array[i]])
+            power_sets.append(current_set + [element])
 
     return power_sets
 
