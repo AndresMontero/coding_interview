@@ -22,5 +22,26 @@ def getPermutations(array):
     return permutations
 
 
+def helper_1(array, perm, permutations):
+    if not len(array) and len(perm):
+        permutations.append(perm)
+    else:
+        for i in range(len(array)):
+            tmp_array = array[:i] + array[i + 1:]
+            new_permutation = perm + [array[i]]
+            helper_1(tmp_array, new_permutation, permutations)
+
+
+def getPermutations_1(array):
+    # Write your code here.
+    # Time O(n^2*n!) worst case, average O(n*n!)
+    # Space O(n*n!)
+    permutations = []
+    perm = []
+    helper_1(array, perm, permutations)
+    return permutations
+
+
 if __name__ == "__main__":
+    print(getPermutations_1([1, 2, 3, 4]))
     print(getPermutations([1, 2, 3, 4]))
