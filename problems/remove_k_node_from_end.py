@@ -32,7 +32,7 @@ def removeKthNodeFromEnd(head, k):
     # Space O(1)
     pointer_1 = head
     pointer_2 = head
-    for i in range(1, k + 1):
+    for i in range(k):
         pointer_2 = pointer_2.next
 
     if pointer_2 is None:
