@@ -1,15 +1,11 @@
 def aux_insert(current_top, stack):
-    if len(stack) < 1:
+    if len(stack) < 1 or stack[-1] <= current_top:
         stack.append(current_top)
         return
     else:
-        if stack[-1] <= current_top:
-            stack.append(current_top)
-            return
-        else:
-            tmp = stack.pop()
-            aux_insert(current_top, stack)
-            stack.append(tmp)
+        tmp = stack.pop()
+        aux_insert(current_top, stack)
+        stack.append(tmp)
 
 
 def sortStack(stack):
