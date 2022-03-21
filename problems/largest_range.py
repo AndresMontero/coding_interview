@@ -49,7 +49,6 @@ def largestRange_1(array):
 
     for num in numbers_set:
         if num - 1 in numbers_set:
-            current_num = num
             start_range = num - 1
             upper = num + 1
             while upper in numbers_set:
