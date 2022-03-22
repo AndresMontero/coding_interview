@@ -35,6 +35,8 @@ def quick_sort_helper(array, start_idx, end_idx):
 
 def quickSort(array):
     # Write your code here.
+    # Time O(nlog(n)) average | O(n^2) worst case
+    # Space O(log(n))
     quick_sort_helper(array, 0, len(array) - 1)
 
     return array
