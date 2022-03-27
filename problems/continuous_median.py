@@ -187,7 +187,66 @@ class ContinuousMedianHandler:
         return self.median
 
 
+from heapq import *
+
+
+# Do not edit the class below except for
+# the insert method. Feel free to add new
+# properties and methods to the class.
+class ContinuousMedianHandler_with_python_class:
+    def __init__(self):
+        # Write your code here.
+        self.median = None
+        self.lower_half = []  # max heap
+        self.upper_half = []  # min heap
+
+    def rebalance_heaps(self):
+        if len(self.lower_half) > len(self.upper_half):
+            tmp = -heappop(self.lower_half)
+            heappush(self.upper_half, tmp)
+        else:
+            tmp = heappop(self.upper_half)
+            heappush(self.lower_half, -tmp)
+
+    def insert(self, number):
+        # Write your code here.
+        # Time O(log(n))
+        # Space O(n)
+        if len(self.lower_half) == 0:
+            heappush(self.lower_half, -number)
+
+        else:
+            if number > -self.lower_half[0]:
+                heappush(self.upper_half, number)
+
+            else:
+                heappush(self.lower_half, -number)
+
+        if abs(len(self.lower_half) - len(self.upper_half)) > 1:
+            self.rebalance_heaps()
+
+        if len(self.lower_half) == len(self.upper_half):
+            self.median = (-self.lower_half[0] + self.upper_half[0]) / 2
+
+        else:
+            self.median = -self.lower_half[0] if len(self.lower_half) > len(self.upper_half) \
+                else self.upper_half[0]
+
+        # print(self.lower_half)
+        # print(self.upper_half)
+
+    def getMedian(self):
+        return self.median
+
+
 handler = ContinuousMedianHandler()
+handler.insert(5)
+handler.insert(10)
+print(handler.getMedian())
+handler.insert(100)
+print(handler.getMedian())
+
+handler = ContinuousMedianHandler_with_python_class()
 handler.insert(5)
 handler.insert(10)
 print(handler.getMedian())
