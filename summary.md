@@ -69,6 +69,15 @@ FIFO (First-in-first-out)
 
 collections.dequeue or list 
 
+### Heap ( Heap )
+
+| Operation  | Time Complexity |
+| ------------- | ------------- |
+| Creation | O(n) |
+| Insertion | O(logn) |
+| Deletion | O(logn) |
+| Retrieval | O(logn) |
+
 
 ### Binary Search Tree ( BST )
 
