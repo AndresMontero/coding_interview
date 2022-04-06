@@ -22,11 +22,11 @@ class MinHeap:
         child_one_idx = current_idx * 2 + 1
         while child_one_idx <= end_idx:
             child_two_idx = current_idx * 2 + 2 if current_idx * 2 + 2 <= end_idx else -1
-            if child_two_idx != -1 and heap[child_two_idx] < heap[child_one_idx]:
+            if child_two_idx != -1 and heap[child_two_idx] < heap[child_one_idx]: # change this to > to build max_heap
                 children_to_swap = child_two_idx
             else:
                 children_to_swap = child_one_idx
-            if heap[children_to_swap] < heap[current_idx]:
+            if heap[children_to_swap] < heap[current_idx]: # change this to > to build max_heap
                 self.swap(current_idx, children_to_swap, heap)
                 current_idx = children_to_swap
                 child_one_idx = current_idx * 2 + 1
