@@ -52,30 +52,26 @@ def sumOfLinkedLists(linkedListOne, linkedListTwo):
     return new_head.next
 
 
-def sumOfLinkedLists_2(linkedListOne, linkedListTwo):
+def sumOfLinkedLists(l1, l2):
     # Write your code here.
-    # Time O(n)
-    # Space O(1)
-    remainder = 0
-    to_divide = 10
-    node_1 = linkedListOne
-    node_2 = linkedListTwo
+    # Time O(n) | Space O(n) where n is the max(len(l1), len(l2))
+    carry = 0
+    result = LinkedList(0)
+    result_head = result
 
-    new_head = LinkedList(0)
-    current_node = new_head
+    while l1 or l2:
+        val_1 = l1.value if l1 else 0
+        val_2 = l2.value if l2 else 0
 
-    while node_1 is not None or node_2 is not None or remainder > 0:
-        value_1 = node_1.value if node_1 is not None else 0
-        value_2 = node_2.value if node_2 is not None else 0
-        sum_values = value_1 + value_2 + remainder
+        val = (val_1 + val_2 + carry) % 10
+        result.next = LinkedList(val)
+        carry = (val_1 + val_2 + carry) // 10
+        result = result.next
 
-        value_to_add = sum_values % to_divide
-        remainder = sum_values // to_divide
-        new_node = LinkedList(value_to_add)
-        current_node.next = new_node
-        current_node = new_node
+        l1 = l1.next if l1 else None
+        l2 = l2.next if l2 else None
 
-        node_1 = node_1.next if node_1 is not None else None
-        node_2 = node_2.next if node_2 is not None else None
+    if carry > 0:
+        result.next = LinkedList(carry)
 
-    return new_head.next
+    return result_head.next
