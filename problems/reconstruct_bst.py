@@ -30,7 +30,7 @@ def aux(lower, upper, array, tree):
 def reconstructBst(preOrderTraversalValues):
     # Write your code here.
 
-    tree_info = TreeInfo(0)
+    tree_info = TreeInfo(0) # class to keep track of the index for the root
 
     return aux(float('-inf'), float('inf'), preOrderTraversalValues, tree_info)
 
