@@ -39,6 +39,52 @@ print(largest_mountain([0, 0, 1, 2, 1, 0]))
 print(largest_mountain([0, 4, 1]))
 print(largest_mountain([0, 1, 3, 4, 1, 0]))
 
+def largest_mountain_2(heights):
+    max_mountain_height = 0  # Initialize the maximum mountain height to 0
+
+    # Iterate through each index in the array
+    for i in range(1, len(heights) - 1):
+        for peak_height in range(heights[i], 0, -1):  # Try decreasing the height at index i
+
+            left, right = i, i  # Initialize pointers for left and right traversal
+            left_height, right_height = 1, 1  # Initialize the left and right mountain height to 1
+            current_peak_height = peak_height  # Initialize the current peak height
+
+            if peak_height < max_mountain_height:
+                # is possible peak is less than max we can skip since we care only about max height
+                continue
+            # Move towards the left end to find the height of the left slope
+            while left > 0 and current_peak_height > 1:
+                if heights[left - 1] >= current_peak_height - 1:  # Mountain can extend
+                    left_height += 1
+                else:  # Mountain cannot extend, break
+                    break
+                current_peak_height -= 1
+                left -= 1
+
+            current_peak_height = peak_height  # Reset the current peak height for the right slope
+
+            # Move towards the right end to find the height of the right slope
+            while right < len(heights) - 1 and current_peak_height > 1:
+                if heights[right + 1] >= current_peak_height - 1:  # Mountain can extend
+                    right_height += 1
+                else:  # Mountain cannot extend, break
+                    break
+                current_peak_height -= 1
+                right += 1
+
+            # The height of the mountain will be the minimum of left and right mountain heights
+            mountain_height = min(left_height, right_height)
+
+            # Update the maximum mountain height if the current mountain height is greater
+            max_mountain_height = max(max_mountain_height, mountain_height)
+
+    return max_mountain_height
+
+print(largest_mountain_2([0, 2, 2, 1, 3, 4, 2, 1, 0]))
+print(largest_mountain_2([0, 0, 1, 2, 1, 0]))
+print(largest_mountain_2([0, 4, 1]))
+print(largest_mountain_2([0, 1, 3, 4, 1, 0]))
 def largest_mountain_dp(arr):
     n = len(arr)
     max_height = 0
@@ -74,8 +120,8 @@ def largest_mountain_dp(arr):
 
     return max_height
 
-# Test the function
-print(largest_mountain_dp([0, 2, 2, 1, 3, 4, 2, 1, 0]))  # Output should be 3
-print(largest_mountain_dp([0, 0, 1, 2, 1, 0]))  # Output should be 2
-print(largest_mountain_dp([0, 4, 1]))  # Output should be 1
-print(largest_mountain_dp([0, 1, 3, 4, 1, 0]))  # Output should be 2
+# # Test the function
+# print(largest_mountain_dp([0, 2, 2, 1, 3, 4, 2, 1, 0]))  # Output should be 3
+# print(largest_mountain_dp([0, 0, 1, 2, 1, 0]))  # Output should be 2
+# print(largest_mountain_dp([0, 4, 1]))  # Output should be 1
+# print(largest_mountain_dp([0, 1, 3, 4, 1, 0]))  # Output should be 2
